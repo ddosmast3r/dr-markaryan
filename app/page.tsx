@@ -46,9 +46,64 @@ export default function Home() {
                 Контакты
               </a>
             </div>
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-              Записаться
-            </button>
+            <div className="flex items-center gap-3">
+              {/* Social Icons */}
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://wa.me/79383030311"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center transition-colors group"
+                  title="WhatsApp"
+                >
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                  </svg>
+                </a>
+                
+                <a
+                  href="https://t.me/doctor_markaryan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors group"
+                  title="Telegram"
+                >
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                  </svg>
+                </a>
+                
+                
+                <a
+                  href="tel:+79383030311"
+                  className="w-10 h-10 bg-gray-600 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors group"
+                  title="Позвонить"
+                >
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                  </svg>
+                </a>
+                
+                <a
+                  href="mailto:doc.edmarkaryan@yandex.ru"
+                  className="w-10 h-10 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors group"
+                  title="Написать email"
+                >
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </a>
+              </div>
+              
+              <div className="flex flex-col gap-2">
+                <button 
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Записаться
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
@@ -67,13 +122,14 @@ export default function Home() {
               
               {/* Mobile Avatar - показываем только на мобилках */}
               <div className="block lg:hidden mb-8">
-                <div className="relative max-w-xs mx-auto">
+                <div className="relative max-w-sm mx-auto">
                   <div className="bg-gradient-to-r from-blue-400 to-blue-600 rounded-3xl p-1">
-                    <div className="bg-white rounded-3xl p-2 aspect-square">
+                    <div className="bg-white rounded-3xl p-2 aspect-[2/3]">
                       <img
                         src="/image/avatar.jpg"
                         alt="Доктор Маркарян Эдуард Жорикович"
                         className="w-full h-full object-cover rounded-3xl"
+                        style={{transform: 'rotate(0deg)'}}
                       />
                     </div>
                   </div>
@@ -122,48 +178,61 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 order-3 lg:order-3">
-                <a
-                  href="https://wa.me/79XXXXXXXXX"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-base flex items-center justify-center gap-2"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                  </svg>
-                  WhatsApp
-                </a>
-                <a
-                  href="https://t.me/doctor_markaryan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors text-base flex items-center justify-center gap-2"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                  </svg>
-                  Telegram
-                </a>
+              <div className="flex flex-col items-center gap-4 order-3 lg:order-3">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <a
+                    href="https://wa.me/79383030311"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-base flex items-center justify-center gap-2"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                    </svg>
+                    WhatsApp
+                  </a>
+                  <a
+                    href="https://t.me/doctor_markaryan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors text-base flex items-center justify-center gap-2"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                    Telegram
+                  </a>
+                  <a
+                    href="https://my.mail.ru/messages/dr_markaryan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors text-base font-medium flex items-center justify-center gap-2"
+                  >
+                    Макс
+                  </a>
+                </div>
+                
+                {/* Video Button */}
                 <button
                   onClick={() => setIsVideoOpen(true)}
-                  className="border border-purple-600 text-purple-600 px-6 py-3 rounded-lg hover:bg-purple-50 transition-colors text-base flex items-center justify-center gap-2"
+                  className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-12 py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-lg font-semibold flex items-center justify-center gap-3"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z"/>
                   </svg>
-                  Видео
+                  Смотреть видеокарточку врача
                 </button>
               </div>
             </div>
             {/* Desktop Avatar - показываем только на больших экранах */}
-            <div className="hidden lg:block relative max-w-sm mx-auto order-2 lg:order-2">
+            <div className="hidden lg:block relative max-w-md mx-auto order-2 lg:order-2">
               <div className="bg-gradient-to-r from-blue-400 to-blue-600 rounded-3xl p-1">
-                <div className="bg-white rounded-3xl p-2 aspect-square">
+                <div className="bg-white rounded-3xl p-2 aspect-[2/3]">
                   <img
                     src="/image/avatar.jpg"
                     alt="Доктор Маркарян Эдуард Жорикович"
                     className="w-full h-full object-cover rounded-3xl"
+                    style={{transform: 'rotate(0deg)'}}
                   />
                 </div>
               </div>
@@ -337,80 +406,72 @@ export default function Home() {
               малоинвазивные методы лечения для максимального комфорта
               пациентов.
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-blue-500">
-                <h4 className="font-semibold text-gray-900 text-lg mb-3">
-                  Геморрой
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Лечение внутреннего и наружного геморроя различной степени
-                  тяжести
-                </p>
-              </div>
+            
+            <div className="bg-white rounded-xl p-8 shadow-lg">
+              <div className="grid md:grid-cols-2 gap-x-8 gap-y-6">
+                <div className="flex items-start group">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 mr-4 flex-shrink-0 group-hover:bg-blue-600 transition-colors"></div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Геморрой</h4>
+                    <p className="text-gray-600 text-sm">Лечение внутреннего и наружного геморроя различной степени тяжести</p>
+                  </div>
+                </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-green-500">
-                <h4 className="font-semibold text-gray-900 text-lg mb-3">
-                  Анальная трещина
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Консервативное и хирургическое лечение острых и хронических
-                  трещин
-                </p>
-              </div>
+                <div className="flex items-start group">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-3 mr-4 flex-shrink-0 group-hover:bg-green-600 transition-colors"></div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Анальная трещина</h4>
+                    <p className="text-gray-600 text-sm">Консервативное и хирургическое лечение острых и хронических трещин</p>
+                  </div>
+                </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-purple-500">
-                <h4 className="font-semibold text-gray-900 text-lg mb-3">
-                  Свищ прямой кишки
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Хирургическое лечение параректальных свищей любой сложности
-                </p>
-              </div>
+                <div className="flex items-start group">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 mr-4 flex-shrink-0 group-hover:bg-purple-600 transition-colors"></div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Свищ прямой кишки</h4>
+                    <p className="text-gray-600 text-sm">Хирургическое лечение параректальных свищей любой сложности</p>
+                  </div>
+                </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-orange-500">
-                <h4 className="font-semibold text-gray-900 text-lg mb-3">
-                  Эпителиальный копчиковый ход
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Удаление кисты копчика с применением современных методик
-                </p>
-              </div>
+                <div className="flex items-start group">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-3 mr-4 flex-shrink-0 group-hover:bg-orange-600 transition-colors"></div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Эпителиальный копчиковый ход</h4>
+                    <p className="text-gray-600 text-sm">Удаление кисты копчика с применением современных методик</p>
+                  </div>
+                </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-pink-500">
-                <h4 className="font-semibold text-gray-900 text-lg mb-3">
-                  Ректовагинальный свищ
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Деликатное лечение свищей между прямой кишкой и влагалищем
-                </p>
-              </div>
+                <div className="flex items-start group">
+                  <div className="w-2 h-2 bg-pink-500 rounded-full mt-3 mr-4 flex-shrink-0 group-hover:bg-pink-600 transition-colors"></div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Ректовагинальный свищ</h4>
+                    <p className="text-gray-600 text-sm">Деликатное лечение свищей между прямой кишкой и влагалищем</p>
+                  </div>
+                </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-teal-500">
-                <h4 className="font-semibold text-gray-900 text-lg mb-3">
-                  Дивертикул ЖКТ
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Лечение дивертикулярной болезни и её осложнений
-                </p>
-              </div>
+                <div className="flex items-start group">
+                  <div className="w-2 h-2 bg-teal-500 rounded-full mt-3 mr-4 flex-shrink-0 group-hover:bg-teal-600 transition-colors"></div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Дивертикул ЖКТ</h4>
+                    <p className="text-gray-600 text-sm">Лечение дивертикулярной болезни и её осложнений</p>
+                  </div>
+                </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-indigo-500">
-                <h4 className="font-semibold text-gray-900 text-lg mb-3">
-                  Анальная бахромка
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Удаление избыточных кожных складок в области заднего прохода
-                </p>
-              </div>
+                <div className="flex items-start group">
+                  <div className="w-2 h-2 bg-indigo-500 rounded-full mt-3 mr-4 flex-shrink-0 group-hover:bg-indigo-600 transition-colors"></div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Анальная бахромка</h4>
+                    <p className="text-gray-600 text-sm">Удаление избыточных кожных складок в области заднего прохода</p>
+                  </div>
+                </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-red-500">
-                <h4 className="font-semibold text-gray-900 text-lg mb-3">
-                  Выпадение прямой кишки
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Коррекция ректального пролапса различными хирургическими
-                  методами
-                </p>
+                <div className="flex items-start group">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-3 mr-4 flex-shrink-0 group-hover:bg-red-600 transition-colors"></div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Выпадение прямой кишки</h4>
+                    <p className="text-gray-600 text-sm">Коррекция ректального пролапса различными хирургическими методами</p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -680,14 +741,36 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="text-center">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
               <a
                 href="https://yandex.ru/medicine/doctor/markaryan_eduard_c98754lmszvOR"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors text-lg"
+                className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors text-lg"
               >
-                <span>Читать все отзывы на Яндекс.Здоровье</span>
+                <span>Читать отзывы на Яндекс.Здоровье</span>
+                <svg
+                  className="ml-2 w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  ></path>
+                </svg>
+              </a>
+              
+              <a
+                href="https://prodoctorov.ru/pyatigorsk/vrach/846542-markaryan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors text-lg"
+              >
+                <span>Смотреть все отзывы на ПроДокторов</span>
                 <svg
                   className="ml-2 w-5 h-5"
                   fill="none"
@@ -726,14 +809,14 @@ export default function Home() {
                   <div className="text-2xl mr-4">📞</div>
                   <div>
                     <p className="font-semibold">Телефон</p>
-                    <p className="text-blue-100">+7 (XXX) XXX-XX-XX</p>
+                    <p className="text-blue-100">+7 938 303 03 11</p>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <div className="text-2xl mr-4">📧</div>
                   <div>
                     <p className="font-semibold">Email</p>
-                    <p className="text-blue-100">doctor@example.com</p>
+                    <p className="text-blue-100">doc.edmarkaryan@yandex.ru</p>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -753,20 +836,31 @@ export default function Home() {
                     <p className="text-blue-100">Пн-Пт: 9:00-18:00</p>
                   </div>
                 </div>
+                <div className="flex items-center">
+                  <div className="text-2xl mr-4">📷</div>
+                  <div>
+                    <p className="font-semibold">Instagram</p>
+                    <p className="text-blue-100">@dr.markaryan_ed</p>
+                  </div>
+                </div>
               </div>
             </div>
             <div id="video-section" className="bg-white rounded-xl p-8 text-gray-900">
               <h3 className="text-2xl font-semibold mb-6">Видеокарточка врача</h3>
               <div className="mb-6">
-                <div className="aspect-[9/16] max-w-sm mx-auto bg-gray-100 rounded-lg flex items-center justify-center">
-                  <video 
-                    controls 
-                    className="w-full h-full rounded-lg object-cover"
-                    poster="/image/video-poster.jpg"
-                  >
-                    <source src="/video/video profile.mp4" type="video/mp4" />
-                    Ваш браузер не поддерживает видео
-                  </video>
+                <div 
+                  className="aspect-[9/16] max-w-sm mx-auto bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-200 rounded-lg flex items-center justify-center cursor-pointer hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all duration-300 shadow-md hover:shadow-lg" 
+                  onClick={() => setIsVideoOpen(true)}
+                >
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 hover:bg-blue-600 transition-colors">
+                      <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                    <p className="text-gray-700 font-medium">Нажмите для просмотра</p>
+                    <p className="text-gray-500 text-sm mt-1">видеокарточки</p>
+                  </div>
                 </div>
               </div>
               
@@ -774,7 +868,7 @@ export default function Home() {
                 <h4 className="text-lg font-semibold mb-4">Записаться на прием</h4>
                 
                 <a
-                  href="https://wa.me/79XXXXXXXXX"
+                  href="https://wa.me/79383030311"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center gap-3"
@@ -827,6 +921,7 @@ export default function Home() {
               <video 
                 controls 
                 autoPlay
+                preload="metadata"
                 className="w-full h-full object-cover"
                 poster="/image/video-poster.jpg"
               >
@@ -848,7 +943,7 @@ export default function Home() {
               
               <div className="space-y-3">
                 <a
-                  href="https://wa.me/79XXXXXXXXX"
+                  href="https://wa.me/79383030311"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-green-500 text-white py-4 rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center gap-3 text-lg"
@@ -869,6 +964,15 @@ export default function Home() {
                     <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                   </svg>
                   Telegram
+                </a>
+                
+                <a
+                  href="https://my.mail.ru/messages/dr_markaryan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-orange-500 text-white py-4 rounded-lg hover:bg-orange-600 transition-colors flex items-center justify-center gap-3 text-lg"
+                >
+                  Макс мессенджер
                 </a>
               </div>
               
