@@ -5,6 +5,18 @@ import { useState } from 'react';
 export default function Home() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
+  const [selectedGalleryItem, setSelectedGalleryItem] = useState<{type: 'image' | 'video', src: string, alt: string} | null>(null);
+
+  const openGalleryModal = (type: 'image' | 'video', src: string, alt: string) => {
+    setSelectedGalleryItem({ type, src, alt });
+    setIsGalleryModalOpen(true);
+  };
+
+  const closeGalleryModal = () => {
+    setIsGalleryModalOpen(false);
+    setSelectedGalleryItem(null);
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
       {/* Navigation */}
@@ -46,7 +58,18 @@ export default function Home() {
                 Контакты
               </a>
             </div>
-            <div className="flex items-center gap-3">
+            
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+              >
+                Записаться
+              </button>
+            </div>
+            
+            <div className="hidden md:flex items-center gap-3">
               {/* Social Icons */}
               <div className="flex items-center gap-2">
                 <a
@@ -349,44 +372,44 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-white">
+      <section id="about" className="py-12 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">О враче</h2>
-            <p className="text-xl text-gray-600">
+          <div className="text-center mb-8 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">О враче</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600">
               Профессиональный опыт и квалификация
             </p>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-16">
             {/* Quick Info */}
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">
                 Квалификация
               </h3>
-              <div className="grid gap-6">
-                <div className="bg-blue-50 rounded-xl p-6">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+              <div className="grid gap-4 sm:gap-6">
+                <div className="bg-blue-50 rounded-lg sm:rounded-xl p-4 sm:p-6">
+                  <div className="flex items-start sm:items-center">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xl sm:text-2xl mr-3 sm:mr-4 flex-shrink-0">
                       ⚕️
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-900">
+                      <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">
                         Специализация
                       </h4>
-                      <p className="text-gray-600">
+                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                         Колопроктология и хирургия толстого кишечника
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="bg-blue-50 rounded-xl p-6">
-                  <div className="flex items-center">
-                    <div className="text-3xl mr-4">🏆</div>
+                <div className="bg-blue-50 rounded-lg sm:rounded-xl p-4 sm:p-6">
+                  <div className="flex items-start sm:items-center">
+                    <div className="text-2xl sm:text-3xl mr-3 sm:mr-4 flex-shrink-0">🏆</div>
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-900">
+                      <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">
                         Опыт работы
                       </h4>
-                      <p className="text-gray-600">
+                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                         Более 6 лет практики в области колопроктологии
                       </p>
                     </div>
@@ -397,27 +420,27 @@ export default function Home() {
 
             {/* Education Timeline */}
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">
                 Образование
               </h3>
               <div className="relative">
                 {/* Timeline line */}
-                <div className="absolute left-7 top-8 bottom-8 w-0.5 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600"></div>
+                <div className="absolute left-6 sm:left-7 top-6 sm:top-8 bottom-6 sm:bottom-8 w-0.5 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600"></div>
 
-                <div className="space-y-8">
+                <div className="space-y-6 sm:space-y-8">
                   {/* 2018 */}
                   <div className="flex items-start relative">
-                    <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg z-10">
+                    <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg z-10">
                       2018
                     </div>
-                    <div className="ml-6 bg-white rounded-xl p-5 shadow-md border-l-4 border-green-500 flex-1">
-                      <h4 className="font-bold text-gray-900 text-base mb-1">
+                    <div className="ml-4 sm:ml-6 bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 shadow-md border-l-4 border-green-500 flex-1">
+                      <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">
                         Лечебное дело
                       </h4>
-                      <p className="text-gray-600 text-sm mb-3 leading-relaxed">
+                      <p className="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 leading-relaxed">
                         Ивановская государственная медицинская академия
                       </p>
-                      <span className="inline-block px-3 py-1.5 bg-green-100 text-green-800 text-xs font-medium rounded-full">
+                      <span className="inline-block px-2 py-1 sm:px-3 sm:py-1.5 bg-green-100 text-green-800 text-xs font-medium rounded-full">
                         📚 Базовое образование
                       </span>
                     </div>
@@ -425,17 +448,17 @@ export default function Home() {
 
                   {/* 2020 */}
                   <div className="flex items-start relative">
-                    <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg z-10">
+                    <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg z-10">
                       2020
                     </div>
-                    <div className="ml-6 bg-white rounded-xl p-5 shadow-md border-l-4 border-blue-500 flex-1">
-                      <h4 className="font-bold text-gray-900 text-base mb-1">
+                    <div className="ml-4 sm:ml-6 bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 shadow-md border-l-4 border-blue-500 flex-1">
+                      <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">
                         Колопроктология
                       </h4>
-                      <p className="text-gray-600 text-sm mb-3 leading-relaxed">
+                      <p className="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 leading-relaxed">
                         Первый МГМУ им. И.М. Сеченова
                       </p>
-                      <span className="inline-block px-3 py-1.5 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                      <span className="inline-block px-2 py-1 sm:px-3 sm:py-1.5 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
                         🎓 Ординатура
                       </span>
                     </div>
@@ -443,26 +466,26 @@ export default function Home() {
 
                   {/* 2021 */}
                   <div className="flex items-start relative">
-                    <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg z-10">
+                    <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg z-10">
                       2021
                     </div>
-                    <div className="ml-6 space-y-4 flex-1">
-                      <div className="bg-white rounded-xl p-5 shadow-md border-l-4 border-purple-500">
-                        <h4 className="font-bold text-gray-900 text-base mb-1">
+                    <div className="ml-4 sm:ml-6 space-y-3 sm:space-y-4 flex-1">
+                      <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 shadow-md border-l-4 border-purple-500">
+                        <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">
                           Эндоскопия
                         </h4>
-                        <span className="inline-block mt-2 px-3 py-1.5 bg-purple-100 text-purple-800 text-xs font-medium rounded-full">
+                        <span className="inline-block mt-1 sm:mt-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-purple-100 text-purple-800 text-xs font-medium rounded-full">
                           📈 Повышение квалификации
                         </span>
                       </div>
-                      <div className="bg-white rounded-xl p-5 shadow-md border-l-4 border-purple-500">
-                        <h4 className="font-bold text-gray-900 text-base mb-1">
+                      <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 shadow-md border-l-4 border-purple-500">
+                        <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">
                           Колопроктология
                         </h4>
-                        <p className="text-gray-600 text-sm mb-3 leading-relaxed">
+                        <p className="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 leading-relaxed">
                           Первый МГМУ им. И.М. Сеченова
                         </p>
-                        <span className="inline-block px-3 py-1.5 bg-purple-100 text-purple-800 text-xs font-medium rounded-full">
+                        <span className="inline-block px-2 py-1 sm:px-3 sm:py-1.5 bg-purple-100 text-purple-800 text-xs font-medium rounded-full">
                           📈 Повышение квалификации
                         </span>
                       </div>
@@ -471,27 +494,27 @@ export default function Home() {
 
                   {/* 2023 */}
                   <div className="flex items-start relative">
-                    <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg z-10">
+                    <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg z-10">
                       2023
                     </div>
-                    <div className="ml-6 space-y-4 flex-1">
-                      <div className="bg-white rounded-xl p-5 shadow-md border-l-4 border-orange-500">
-                        <h4 className="font-bold text-gray-900 text-base mb-1">
+                    <div className="ml-4 sm:ml-6 space-y-3 sm:space-y-4 flex-1">
+                      <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 shadow-md border-l-4 border-orange-500">
+                        <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">
                           Хирургия
                         </h4>
-                        <p className="text-gray-600 text-sm mb-3 leading-relaxed">
+                        <p className="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3 leading-relaxed">
                           Академия повышения квалификации и профессиональной
                           переподготовки
                         </p>
-                        <span className="inline-block px-3 py-1.5 bg-orange-100 text-orange-800 text-xs font-medium rounded-full">
+                        <span className="inline-block px-2 py-1 sm:px-3 sm:py-1.5 bg-orange-100 text-orange-800 text-xs font-medium rounded-full">
                           🔄 Циклы переподготовки
                         </span>
                       </div>
-                      <div className="bg-white rounded-xl p-5 shadow-md border-l-4 border-orange-500">
-                        <h4 className="font-bold text-gray-900 text-base mb-1">
+                      <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 shadow-md border-l-4 border-orange-500">
+                        <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">
                           Организация здравоохранения
                         </h4>
-                        <span className="inline-block px-3 py-1.5 bg-orange-100 text-orange-800 text-xs font-medium rounded-full">
+                        <span className="inline-block px-2 py-1 sm:px-3 sm:py-1.5 bg-orange-100 text-orange-800 text-xs font-medium rounded-full">
                           🔄 Циклы переподготовки
                         </span>
                       </div>
@@ -503,19 +526,19 @@ export default function Home() {
           </div>
 
           {/* Treatment Profile */}
-          <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl p-8">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4 text-center">
+          <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">
               Профиль лечения
             </h3>
-            <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-center text-gray-600 text-sm sm:text-base mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
               Специализируюсь на диагностике и лечении широкого спектра
               колопроктологических заболеваний. Использую современные
               малоинвазивные методы лечения для максимального комфорта
               пациентов.
             </p>
             
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <div className="grid md:grid-cols-2 gap-x-8 gap-y-6">
+            <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                 <div className="flex items-start group">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 mr-4 flex-shrink-0 group-hover:bg-blue-600 transition-colors"></div>
                   <div>
@@ -595,45 +618,45 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-gray-50">
+      <section id="services" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Услуги</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Услуги</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Комплексная медицинская помощь с применением современных технологий и индивидуальным подходом к каждому пациенту
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Primary Services */}
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-blue-600 group">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-200 transition-colors">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white rounded-lg sm:rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-blue-600 group">
+              <div className="flex items-center mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-3 sm:mr-4 group-hover:bg-blue-200 transition-colors flex-shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">Диагностика</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Диагностика</h3>
               </div>
-              <p className="text-gray-600 mb-4">Современные методы обследования для точной постановки диагноза</p>
-              <ul className="text-sm text-gray-500 space-y-1">
+              <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">Современные методы обследования для точной постановки диагноза</p>
+              <ul className="text-xs sm:text-sm text-gray-500 space-y-1">
                 <li>• Клинический осмотр</li>
                 <li>• Лабораторные исследования</li>
                 <li>• Инструментальная диагностика</li>
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-red-600 group">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4 group-hover:bg-red-200 transition-colors">
-                  <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white rounded-lg sm:rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-red-600 group">
+              <div className="flex items-center mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-lg flex items-center justify-center mr-3 sm:mr-4 group-hover:bg-red-200 transition-colors flex-shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">Хирургическое лечение</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Хирургическое лечение</h3>
               </div>
-              <p className="text-gray-600 mb-4">Малоинвазивные и классические хирургические вмешательства</p>
-              <ul className="text-sm text-gray-500 space-y-1">
+              <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">Малоинвазивные и классические хирургические вмешательства</p>
+              <ul className="text-xs sm:text-sm text-gray-500 space-y-1">
                 <li>• Операции при геморрое</li>
                 <li>• Лечение свищей</li>
                 <li>• Удаление новообразований</li>
@@ -731,45 +754,57 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-20 bg-white">
+      <section id="gallery" className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Рабочие моменты</h2>
-            <p className="text-xl text-gray-600">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Рабочие моменты</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed">
               Моменты из профессиональной деятельности и взаимодействия с коллегами
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
             {/* Certificates and Awards */}
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6 sm:mb-8 text-center">
                 Грамоты и сертификаты
               </h3>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {/* Certificates */}
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer">
+                <div 
+                  className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer"
+                  onClick={() => openGalleryModal('image', '/image/G_ProDoctorov_1_2023.jpg', 'Грамота ProDoctorov 2023')}
+                >
                   <img
                     src="/image/G_ProDoctorov_1_2023.jpg"
                     alt="Грамота ProDoctorov 2023"
                     className="w-full h-auto object-contain"
                   />
                 </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer">
+                <div 
+                  className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer"
+                  onClick={() => openGalleryModal('image', '/image/G_ProDoctorov_2_2022.jpg', 'Грамота ProDoctorov 2022')}
+                >
                   <img
                     src="/image/G_ProDoctorov_2_2022.jpg"
                     alt="Грамота ProDoctorov 2022"
                     className="w-full h-auto object-contain"
                   />
                 </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer">
+                <div 
+                  className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer"
+                  onClick={() => openGalleryModal('image', '/image/G_ProDoctorov_2_2025.jpg', 'Грамота ProDoctorov 2025')}
+                >
                   <img
                     src="/image/G_ProDoctorov_2_2025.jpg"
                     alt="Грамота ProDoctorov 2025"
                     className="w-full h-auto object-contain"
                   />
                 </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer">
+                <div 
+                  className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer"
+                  onClick={() => openGalleryModal('image', '/image/G_ProDoctorov_3_2024.jpg', 'Грамота ProDoctorov 2024')}
+                >
                   <img
                     src="/image/G_ProDoctorov_3_2024.jpg"
                     alt="Грамота ProDoctorov 2024"
@@ -781,12 +816,15 @@ export default function Home() {
 
             {/* Examples of Work */}
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6 sm:mb-8 text-center">
                 Рабочие фото
               </h3>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {/* Real work photos and video */}
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer">
+                <div 
+                  className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer"
+                  onClick={() => openGalleryModal('image', '/image/work/IMG_9673.JPG', 'Рабочий момент - взаимодействие с коллегами')}
+                >
                   <img 
                     src="/image/work/IMG_9673.JPG" 
                     alt="Рабочий момент - взаимодействие с коллегами"
@@ -794,34 +832,45 @@ export default function Home() {
                   />
                 </div>
                 
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer relative">
+                <div 
+                  className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer relative"
+                  onClick={() => openGalleryModal('video', '/image/work/WhatsApp Video 2025-12-21 at 10.45.34.mp4', 'Рабочее видео')}
+                >
                   <video 
                     className="w-full h-full object-cover aspect-square"
                     muted
                     loop
-                    onMouseEnter={(e) => e.currentTarget.play()}
-                    onMouseLeave={(e) => e.currentTarget.pause()}
+                    preload="metadata"
                   >
                     <source src="/image/work/WhatsApp Video 2025-12-21 at 10.45.34.mp4" type="video/mp4" />
                   </video>
-                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 hover:bg-opacity-0 transition-all">
-                    <svg className="w-12 h-12 text-white opacity-70" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 hover:bg-opacity-10 transition-all">
+                    <svg className="w-12 h-12 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
                     </svg>
                   </div>
                 </div>
                 
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer">
+                <div 
+                  className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer"
+                  onClick={() => openGalleryModal('image', '/image/work/IMG_9647.JPG', 'На медицинской конференции')}
+                >
                   <img 
                     src="/image/work/IMG_9647.JPG" 
-                    alt="Рабочий момент в операционной"
+                    alt="На медицинской конференции"
                     className="w-full h-full object-cover aspect-square"
                   />
                 </div>
                 
-                <div className="bg-gray-100 rounded-lg p-6 aspect-square flex flex-col items-center justify-center border-2 border-dashed border-gray-300">
-                  <div className="text-4xl text-gray-400 mb-2">📹</div>
-                  <p className="text-gray-500 text-sm text-center">Еще видео скоро</p>
+                <div 
+                  className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer"
+                  onClick={() => openGalleryModal('image', '/image/work/IMG_9000.jpeg', 'Рабочий момент с коллегами')}
+                >
+                  <img 
+                    src="/image/work/IMG_9000.jpeg" 
+                    alt="Рабочий момент с коллегами"
+                    className="w-full h-full object-cover aspect-square"
+                  />
                 </div>
               </div>
             </div>
@@ -830,54 +879,54 @@ export default function Home() {
       </section>
 
       {/* Reviews Section */}
-      <section id="reviews" className="py-20 bg-gray-50">
+      <section id="reviews" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
               Отзывы пациентов
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed">
               Что говорят о работе доктора Маркарян Эдуард Жорикович
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
+          <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg">
             {/* Rating Section */}
-            <div className="text-center mb-8">
-              <div className="inline-block bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-6 mb-6">
-                <div className="flex items-center justify-center mb-3">
-                  <div className="flex text-yellow-400 mr-4">
+            <div className="text-center mb-6 sm:mb-8">
+              <div className="inline-block bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
+                <div className="flex items-center justify-center mb-2 sm:mb-3">
+                  <div className="flex text-yellow-400 mr-3 sm:mr-4">
                     {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                      <svg key={i} className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                       </svg>
                     ))}
                   </div>
-                  <span className="text-4xl font-bold text-gray-900">4.9</span>
-                  <span className="text-gray-600 ml-2 text-lg">из 5</span>
+                  <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">4.9</span>
+                  <span className="text-gray-600 ml-1 sm:ml-2 text-sm sm:text-base lg:text-lg">из 5</span>
                 </div>
-                <p className="text-gray-600 font-medium">Высокий рейтинг пациентов</p>
+                <p className="text-gray-600 font-medium text-sm sm:text-base">Высокий рейтинг пациентов</p>
               </div>
             </div>
 
             {/* Platform Links Section */}
             <div className="text-center">
-              <h4 className="text-lg font-semibold text-gray-700 mb-6">
+              <h4 className="text-base sm:text-lg font-semibold text-gray-700 mb-4 sm:mb-6">
                 Читайте отзывы на платформах:
               </h4>
               
-              <div className="flex flex-col sm:flex-row gap-8 items-center justify-center">
+              <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-center justify-center">
                 <a
                   href="https://yandex.ru/medicine/doctor/markaryan_eduard_c98754lmszvOR"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-gray-50 hover:bg-gray-100 rounded-xl p-4 transition-all duration-300"
+                  className="group bg-gray-50 hover:bg-gray-100 rounded-xl p-4 sm:p-6 transition-all duration-300 flex items-center justify-center min-h-20 sm:min-h-24"
                   title="Читать отзывы на Яндекс.Здоровье"
                 >
                   <img 
                     src="/image/Yandex_Health_logo.svg.png" 
                     alt="Читать отзывы на Яндекс.Здоровье" 
-                    className="h-12 w-auto hover:scale-105 transition-transform duration-300"
+                    className="h-12 sm:h-16 w-auto object-contain hover:scale-105 transition-transform duration-300"
                   />
                 </a>
                 
@@ -885,13 +934,13 @@ export default function Home() {
                   href="https://prodoctorov.ru/pyatigorsk/vrach/846542-markaryan/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-gray-50 hover:bg-gray-100 rounded-xl p-4 transition-all duration-300"
+                  className="group bg-gray-50 hover:bg-gray-100 rounded-xl p-4 sm:p-6 transition-all duration-300 flex items-center justify-center min-h-20 sm:min-h-24"
                   title="Смотреть все отзывы на ПроДокторов"
                 >
                   <img 
                     src="/image/Логотипа_ПроДокторов.png" 
                     alt="Смотреть все отзывы на ПроДокторов" 
-                    className="h-12 w-auto hover:scale-105 transition-transform duration-300"
+                    className="h-12 sm:h-16 w-auto object-contain hover:scale-105 transition-transform duration-300"
                   />
                 </a>
               </div>
@@ -901,62 +950,62 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-blue-600 text-white">
+      <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Контакты</h2>
-            <p className="text-xl text-blue-100">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Контакты</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-blue-100 leading-relaxed">
               Свяжитесь со мной для записи на прием
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
             <div>
-              <h3 className="text-2xl font-semibold mb-6">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">
                 Контактная информация
               </h3>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <div className="text-2xl mr-4">📞</div>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-start sm:items-center">
+                  <div className="text-xl sm:text-2xl mr-3 sm:mr-4 flex-shrink-0">📞</div>
                   <div>
-                    <p className="font-semibold">Телефон</p>
-                    <p className="text-blue-100">+7 938 303 03 11</p>
+                    <p className="font-semibold text-sm sm:text-base">Телефон</p>
+                    <p className="text-blue-100 text-sm sm:text-base">+7 938 303 03 11</p>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <div className="text-2xl mr-4">📧</div>
+                <div className="flex items-start sm:items-center">
+                  <div className="text-xl sm:text-2xl mr-3 sm:mr-4 flex-shrink-0">📧</div>
                   <div>
-                    <p className="font-semibold">Email</p>
-                    <p className="text-blue-100">doc.edmarkaryan@yandex.ru</p>
+                    <p className="font-semibold text-sm sm:text-base">Email</p>
+                    <p className="text-blue-100 text-sm sm:text-base break-all">doc.edmarkaryan@yandex.ru</p>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <div className="text-2xl mr-4">📍</div>
+                <div className="flex items-start sm:items-center">
+                  <div className="text-xl sm:text-2xl mr-3 sm:mr-4 flex-shrink-0">📍</div>
                   <div>
-                    <p className="font-semibold">Адрес</p>
-                    <p className="text-blue-100">
+                    <p className="font-semibold text-sm sm:text-base">Адрес</p>
+                    <p className="text-blue-100 text-sm sm:text-base leading-relaxed">
                       г. Пятигорск<br/>
                       г. Ессентуки
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <div className="text-2xl mr-4">🕒</div>
+                <div className="flex items-start sm:items-center">
+                  <div className="text-xl sm:text-2xl mr-3 sm:mr-4 flex-shrink-0">🕒</div>
                   <div>
-                    <p className="font-semibold">Часы приема</p>
-                    <p className="text-blue-100">Пн-Пт: 9:00-18:00</p>
+                    <p className="font-semibold text-sm sm:text-base">Часы приема</p>
+                    <p className="text-blue-100 text-sm sm:text-base">Пн-Пт: 9:00-18:00</p>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <div className="text-2xl mr-4">📷</div>
+                <div className="flex items-start sm:items-center">
+                  <div className="text-xl sm:text-2xl mr-3 sm:mr-4 flex-shrink-0">📷</div>
                   <div>
-                    <p className="font-semibold">Instagram</p>
-                    <p className="text-blue-100">@dr.markaryan_ed</p>
+                    <p className="font-semibold text-sm sm:text-base">Instagram</p>
+                    <p className="text-blue-100 text-sm sm:text-base">@dr.markaryan_ed</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div id="video-section" className="bg-white rounded-xl p-8 text-gray-900">
-              <h3 className="text-2xl font-semibold mb-6">Видеокарточка врача</h3>
+            <div id="video-section" className="bg-white rounded-lg sm:rounded-xl p-6 sm:p-8 text-gray-900">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">Видеокарточка врача</h3>
               <div className="mb-6">
                 <div 
                   className="aspect-[9/16] max-w-sm mx-auto bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-200 rounded-lg flex items-center justify-center cursor-pointer hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all duration-300 shadow-md hover:shadow-lg" 
@@ -1007,37 +1056,37 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-8 sm:py-10 lg:py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-lg mb-2">Доктор Маркарян Эдуард Жорикович</p>
-          <p className="text-gray-400">Хирург-колопроктолог</p>
+          <p className="text-base sm:text-lg mb-1 sm:mb-2">Доктор Маркарян Эдуард Жорикович</p>
+          <p className="text-gray-400 text-sm sm:text-base">Хирург-колопроктолог</p>
           
           {/* Medical Disclaimer */}
-          <div className="mt-8 mb-6 flex justify-center">
+          <div className="mt-6 sm:mt-8 mb-4 sm:mb-6 flex justify-center">
             <img 
               src="/image/cure-sm.png" 
               alt="Имеются противопоказания, проконсультируйтесь со специалистом" 
-              className="w-40 h-auto opacity-80"
+              className="w-32 sm:w-40 h-auto opacity-80"
             />
           </div>
           
-          <div className="mt-6 text-gray-500">
-            <p>&copy; 2025 </p>
+          <div className="mt-4 sm:mt-6 text-gray-500">
+            <p className="text-sm sm:text-base">&copy; 2025 </p>
           </div>
         </div>
       </footer>
 
       {/* Video Modal */}
       {isVideoOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50" onClick={() => setIsVideoOpen(false)}>
-          <div className="relative max-w-2xl w-full mx-4" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={() => setIsVideoOpen(false)}>
+          <div className="relative max-w-2xl w-full" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setIsVideoOpen(false)}
-              className="absolute -top-10 right-0 text-white text-2xl hover:text-gray-300 transition-colors"
+              className="absolute -top-8 sm:-top-10 right-0 text-white text-xl sm:text-2xl hover:text-gray-300 transition-colors z-10"
             >
               ✕
             </button>
-            <div className="aspect-[9/16] max-w-sm mx-auto bg-gray-900 rounded-lg overflow-hidden">
+            <div className="aspect-[9/16] max-w-xs sm:max-w-sm mx-auto bg-gray-900 rounded-lg overflow-hidden">
               <video 
                 controls 
                 autoPlay
@@ -1055,11 +1104,11 @@ export default function Home() {
 
       {/* Contact Modal */}
       {isContactModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => setIsContactModalOpen(false)}>
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setIsContactModalOpen(false)}>
+          <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
             <div className="text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Выберите способ связи</h3>
-              <p className="text-gray-600 mb-6">Через какой мессенджер вам удобнее записаться на прием?</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Выберите способ связи</h3>
+              <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">Через какой мессенджер вам удобнее записаться на прием?</p>
               
               <div className="space-y-3">
                 <a
@@ -1104,6 +1153,40 @@ export default function Home() {
                 Отмена
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Gallery Modal */}
+      {isGalleryModalOpen && selectedGalleryItem && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4" onClick={closeGalleryModal}>
+          <div className="relative max-w-4xl w-full h-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={closeGalleryModal}
+              className="absolute top-4 right-4 text-white text-2xl sm:text-3xl hover:text-gray-300 transition-colors z-10 bg-black bg-opacity-50 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center"
+            >
+              ✕
+            </button>
+            
+            <div className="w-full h-full max-h-[90vh] flex items-center justify-center">
+              {selectedGalleryItem.type === 'image' ? (
+                <img
+                  src={selectedGalleryItem.src}
+                  alt={selectedGalleryItem.alt}
+                  className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                />
+              ) : (
+                <video
+                  src={selectedGalleryItem.src}
+                  controls
+                  autoPlay
+                  className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                >
+                  Ваш браузер не поддерживает видео
+                </video>
+              )}
+            </div>
+            
           </div>
         </div>
       )}
