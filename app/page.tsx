@@ -640,9 +640,10 @@ export default function Home() {
               </div>
               <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">Современные методы обследования для точной постановки диагноза</p>
               <ul className="text-xs sm:text-sm text-gray-500 space-y-1">
-                <li>• Клинический осмотр</li>
-                <li>• Лабораторные исследования</li>
-                <li>• Инструментальная диагностика</li>
+                <li>• Колоноскопия</li>
+                <li>• Ректороманоскопия</li>
+                <li>• Аноскопия</li>
+                <li>• Пальцевое исследование</li>
               </ul>
             </div>
 
@@ -937,9 +938,23 @@ export default function Home() {
                   className="group bg-gray-50 hover:bg-gray-100 rounded-xl p-4 sm:p-6 transition-all duration-300 flex items-center justify-center min-h-20 sm:min-h-24"
                   title="Смотреть все отзывы на ПроДокторов"
                 >
-                  <img 
-                    src="/image/Логотипа_ПроДокторов.png" 
-                    alt="Смотреть все отзывы на ПроДокторов" 
+                  <img
+                    src="/image/Логотипа_ПроДокторов.png"
+                    alt="Смотреть все отзывы на ПроДокторов"
+                    className="h-12 sm:h-16 w-auto object-contain hover:scale-105 transition-transform duration-300"
+                  />
+                </a>
+
+                <a
+                  href="https://napopravku.ru/essentuki/doctor-profile/markarjan-eduard-zhorikovich/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-gray-50 hover:bg-gray-100 rounded-xl p-4 sm:p-6 transition-all duration-300 flex items-center justify-center min-h-20 sm:min-h-24"
+                  title="Смотреть отзывы на НаПоправку"
+                >
+                  <img
+                    src="/image/napopravku_logo.png"
+                    alt="Смотреть отзывы на НаПоправку"
                     className="h-12 sm:h-16 w-auto object-contain hover:scale-105 transition-transform duration-300"
                   />
                 </a>
