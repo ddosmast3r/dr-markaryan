@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -23,8 +24,11 @@ export default function Footer() {
         
         <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mb-8"></div>
         
-        <div className="text-xs sm:text-sm text-gray-500 text-center">
+        <div className="text-xs sm:text-sm text-gray-500 text-center space-y-3">
           <p>&copy; {new Date().getFullYear()} Все права защищены. Сайт носит исключительно информационный характер.</p>
+          <Link href="/privacy" className="inline-flex text-gray-400 hover:text-white transition-colors">
+            Политика конфиденциальности
+          </Link>
         </div>
       </div>
     </footer>
