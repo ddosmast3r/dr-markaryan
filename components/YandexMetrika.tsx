@@ -11,11 +11,23 @@ interface YandexMetrikaProps {
 }
 
 const CONSENT_STORAGE_KEY = "analytics-consent";
+const GOAL_ATTRIBUTE = "data-metrika-goal";
 
 declare global {
   interface Window {
     ym?: (...args: unknown[]) => void;
   }
+}
+
+function getGoalByHref(href: string) {
+  if (href.startsWith("tel:")) return "click_phone";
+  if (href.startsWith("mailto:")) return "click_email";
+  if (href.includes("wa.me/")) return "click_whatsapp";
+  if (href.includes("t.me/")) return "click_telegram";
+  if (href.includes("web.max.ru/")) return "click_max";
+  if (href.includes("instagram.com/")) return "click_instagram";
+
+  return null;
 }
 
 export default function YandexMetrika({ counterId }: YandexMetrikaProps) {
@@ -35,6 +47,33 @@ export default function YandexMetrika({ counterId }: YandexMetrikaProps) {
 
     return () => window.clearTimeout(timerId);
   }, []);
+
+  useEffect(() => {
+    if (!counterId) return;
+
+    const handleGoalClick = (event: MouseEvent) => {
+      const target = event.target;
+
+      if (!(target instanceof Element)) return;
+
+      const goalElement = target.closest(`[${GOAL_ATTRIBUTE}], a`);
+
+      if (!goalElement) return;
+
+      const explicitGoal = goalElement.getAttribute(GOAL_ATTRIBUTE);
+      const goal =
+        explicitGoal ||
+        (goalElement instanceof HTMLAnchorElement ? getGoalByHref(goalElement.href) : null);
+
+      if (!goal || typeof window.ym !== "function") return;
+
+      window.ym(Number(counterId), "reachGoal", goal);
+    };
+
+    document.addEventListener("click", handleGoalClick);
+
+    return () => document.removeEventListener("click", handleGoalClick);
+  }, [counterId]);
 
   const handleConsent = (nextConsent: Exclude<ConsentState, null>) => {
     window.localStorage.setItem(CONSENT_STORAGE_KEY, nextConsent);

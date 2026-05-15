@@ -119,6 +119,7 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps) {
               
               <button
                 onClick={onOpenVideoModal}
+                data-metrika-goal="open_video"
                 className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-4 rounded-xl hover:shadow-xl transition-all text-lg font-bold flex items-center justify-center gap-3 transform hover:-translate-y-0.5"
               >
                 <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
@@ -221,6 +222,7 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps) {
               
               <button
                 onClick={onOpenVideoModal}
+                data-metrika-goal="open_video"
                 className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-12 py-5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-lg font-bold flex items-center justify-center gap-3 w-full sm:w-auto"
               >
                 <svg className="w-7 h-7 fill-current" viewBox="0 0 24 24">
