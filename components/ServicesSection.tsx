@@ -132,6 +132,7 @@ export default function ServicesSection({ onOpenContactModal }: ServicesSectionP
               <div className="flex justify-center">
                 <button 
                   onClick={onOpenContactModal}
+                  data-metrika-goal="open_contact_modal"
                   className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-xl hover:shadow-lg transition-all text-lg font-bold transform hover:scale-105"
                 >
                   Записаться на прием

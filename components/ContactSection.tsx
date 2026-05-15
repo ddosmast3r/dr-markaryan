@@ -76,6 +76,7 @@ export default function ContactSection({ onOpenVideoModal, onOpenContactModal }:
                 <div 
                   className="aspect-[9/16] max-w-[200px] mx-auto bg-gray-100 rounded-2xl flex items-center justify-center cursor-pointer hover:shadow-xl transition-all duration-300 relative group overflow-hidden" 
                   onClick={onOpenVideoModal}
+                  data-metrika-goal="open_video"
                 >
                    <Image
                     src="/image/avatar.jpg"
@@ -100,6 +101,7 @@ export default function ContactSection({ onOpenVideoModal, onOpenContactModal }:
               <h4 className="text-xl font-bold mb-6">Быстрая запись</h4>
               <button 
                 onClick={onOpenContactModal}
+                data-metrika-goal="open_contact_modal"
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all font-bold text-lg transform hover:-translate-y-1"
               >
                 Выбрать мессенджер для записи

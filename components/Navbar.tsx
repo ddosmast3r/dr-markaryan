@@ -57,7 +57,7 @@ export default function Navbar({ onOpenContactModal }: NavbarProps) {
               </a>
             </div>
             
-            <button onClick={onOpenContactModal} className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 font-semibold">
+            <button onClick={onOpenContactModal} data-metrika-goal="open_contact_modal" className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 font-semibold">
               Записаться
             </button>
           </div>
@@ -66,6 +66,7 @@ export default function Navbar({ onOpenContactModal }: NavbarProps) {
           <div className="md:hidden flex items-center gap-3">
             <button 
               onClick={onOpenContactModal}
+              data-metrika-goal="open_contact_modal"
               className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-2 rounded-xl text-sm font-semibold hover:shadow-md transition-shadow"
             >
               Запись
