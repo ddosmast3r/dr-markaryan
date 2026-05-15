@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: {
+    root: process.cwd(),
+  },
   images: {
     // Если решите использовать изображения с внешних ссылок (например, с базы данных или CDN),
     // раскомментируйте и настройте remotePatterns:
