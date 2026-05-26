@@ -169,6 +169,8 @@ export default function Modals({
               ) : (
                 <video
                   src={selectedGalleryItem.src}
+                  poster="/image/video-poster.jpg"
+                  preload="none"
                   controls
                   autoPlay
                   className="max-w-full max-h-full object-contain rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"

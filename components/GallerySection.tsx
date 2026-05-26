@@ -1,4 +1,6 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 interface GallerySectionProps {
@@ -6,6 +8,7 @@ interface GallerySectionProps {
 }
 
 export default function GallerySection({ onOpenGalleryModal }: GallerySectionProps) {
+  const [isVideoActive, setIsVideoActive] = useState(false);
   return (
     <section id="gallery" className="py-16 sm:py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 relative">
@@ -93,27 +96,43 @@ export default function GallerySection({ onOpenGalleryModal }: GallerySectionPro
                 />
               </div>
               
-              <div 
-                className="bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer relative group transform hover:-translate-y-1"
-                onClick={() => onOpenGalleryModal('video', '/image/work/whatsapp_video_2025_12_21.mp4', 'Рабочее видео')}
-              >
-                <video 
-                  className="w-full h-full object-cover aspect-square opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                  muted
-                  loop
-                  autoPlay
-                  playsInline
-                  preload="metadata"
-                >
-                  <source src="/image/work/whatsapp_video_2025_12_21.mp4" type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-all duration-300">
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
-                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                </div>
+              <div className="bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 relative group transform hover:-translate-y-1">
+                {isVideoActive ? (
+                  <video
+                    className="w-full h-full object-cover aspect-square"
+                    src="/image/work/whatsapp_video_2025_12_21.mp4"
+                    poster="/image/video-poster.jpg"
+                    preload="none"
+                    controls
+                    autoPlay
+                    playsInline
+                  >
+                    Ваш браузер не поддерживает видео
+                  </video>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setIsVideoActive(true)}
+                    className="block w-full h-full cursor-pointer"
+                    aria-label="Воспроизвести рабочее видео"
+                  >
+                    <Image
+                      src="/image/video-poster.jpg"
+                      alt="Рабочее видео"
+                      width={480}
+                      height={784}
+                      sizes="(max-width: 1024px) 50vw, 320px"
+                      className="w-full h-full object-cover aspect-square opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                    <span className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-all duration-300">
+                      <span className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                        <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </span>
+                    </span>
+                  </button>
+                )}
               </div>
               
               <div 
