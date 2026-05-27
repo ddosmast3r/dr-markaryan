@@ -80,7 +80,7 @@ export default function YandexMetrika({ counterId }: YandexMetrikaProps) {
     setConsent(nextConsent);
   };
 
-  const shouldLoadMetrika = Boolean(counterId) && consent === "accepted";
+  const shouldLoadMetrika = Boolean(counterId) && isReady && consent !== "declined";
   const shouldShowBanner = isReady && consent === null;
 
   return (
